@@ -5,30 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo de Produtos - Grupo SR</title>
 
-  <!-- Google Fonts: Russo One (Títulos) e Inter (Textos) -->
+  <!-- Google Fonts: Russo One (Destaques) e Inter (Textos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
 
   <style>
     /* ===================================================
-       1. VARIÁVEIS DE CORES INSTITUCIONAIS (GRUPO SR)
+       1. VARIÁVEIS INSTITUCIONAIS GRUPO SR
        =================================================== */
     :root {
-      --verde-escuro: #10543A;
-      --verde-claro:  #008046;
-      --verde-lima:   #7DC817;
-      --verde-suave:  #5BBA6F;
+      --verde-escuro: #10543A; /* Verde Institucional Principal */
+      --verde-claro:  #008046; /* Verde Secundário */
+      --verde-lima:   #7DC817; /* Verde Destaque/Ação */
       
-      --bg-light:      #F4F6F8;
-      --text-dark:     #1F2937;
-      --text-muted:    #6B7280;
+      --bg-body:       #F8FAFC;
+      --text-dark:     #1E293B;
+      --text-muted:    #64748B;
+      --border-color:  #E2E8F0;
       --white:         #FFFFFF;
     }
 
-    /* ===================================================
-       2. ESTILOS GERAIS E TIPOGRAFIA
-       =================================================== */
     * {
       margin: 0;
       padding: 0;
@@ -37,32 +34,58 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
+      background-color: var(--bg-body);
       color: var(--text-dark);
       line-height: 1.5;
     }
 
     h1, h2, h3, .brand-font {
       font-family: 'Russo One', sans-serif;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     /* ===================================================
-       3. CABEÇALHO / NAVBAR
+       2. BARRA SUPERIOR (TOP BAR CORPORATIVA)
        =================================================== */
-    header {
+    .top-bar {
       background-color: var(--verde-escuro);
       color: var(--white);
+      padding: 6px 2rem;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .top-bar-info span {
+      margin-right: 20px;
+    }
+
+    /* ===================================================
+       3. CABEÇALHO CLEAN (ESTILO SR.IND.BR)
+       =================================================== */
+    header {
+      background-color: var(--white);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--verde-claro);
     }
 
-    .logo img {
-      height: 45px;
+    /* LOGO DESTACADA EM FUNDO CLARO */
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 60px; /* Logo grande e bem nítida */
       width: auto;
       display: block;
     }
@@ -70,101 +93,167 @@
     nav ul {
       display: flex;
       list-style: none;
-      gap: 20px;
+      gap: 30px;
     }
 
     nav a {
-      color: var(--white);
+      color: var(--text-dark);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
       transition: color 0.2s ease;
     }
 
     nav a:hover {
-      color: var(--verde-lima);
+      color: var(--verde-claro);
+    }
+
+    .btn-contact {
+      background-color: var(--verde-lima);
+      color: var(--verde-escuro);
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-contact:hover {
+      background-color: #6eb314;
+      transform: translateY(-1px);
     }
 
     /* ===================================================
-       4. CONTEÚDO PRINCIPAL & CATÁLOGO
+       4. HERO BANNER DE APRESENTAÇÃO
+       =================================================== */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--verde-escuro) 0%, #0a3826 100%);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-banner h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-banner p {
+      color: #CBD5E1;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===================================================
+       5. CATÁLOGO DE PRODUTOS
        =================================================== */
     .container {
-      max-width: 1200px;
-      margin: 2rem auto;
+      max-width: 1280px;
+      margin: 0 auto 4rem auto;
       padding: 0 1.5rem;
     }
 
-    .page-title {
+    .section-title {
       color: var(--verde-escuro);
-      margin-bottom: 1.5rem;
       font-size: 1.8rem;
-      border-bottom: 3px solid var(--verde-lima);
-      display: inline-block;
-      padding-bottom: 0.3rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background-color: var(--verde-lima);
+      margin-top: 6px;
+      border-radius: 2px;
     }
 
     .catalog {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
     }
 
+    /* CARD DE PRODUTO */
     .product-card {
       background: var(--white);
-      border: 1px solid #E5E7EB;
-      border-top: 4px solid var(--verde-claro);
-      border-radius: 8px;
-      width: 320px;
-      padding: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      border-color: var(--verde-claro);
+    }
+
+    .img-wrapper {
+      background-color: #F8FAFC;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 16px;
+      border: 1px solid #F1F5F9;
     }
 
     .product-card img {
       width: 100%;
       height: 220px;
       object-fit: contain;
-      border-radius: 4px;
-      background-color: #FAFAFA;
-      padding: 8px;
     }
 
     .product-title {
       font-family: 'Russo One', sans-serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--verde-escuro);
-      margin: 12px 0 4px 0;
+      margin-bottom: 4px;
       line-height: 1.3;
+      text-transform: uppercase;
     }
 
     .product-code {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       font-weight: 500;
     }
 
+    .option-group {
+      margin-bottom: 16px;
+    }
+
     label {
-      font-size: 0.85rem;
-      color: var(--text-dark);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 6px;
     }
 
     .color-select {
       width: 100%;
-      padding: 8px 10px;
-      margin-top: 6px;
-      margin-bottom: 12px;
-      border: 1px solid #D1D5DB;
+      padding: 10px;
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       background-color: #FFFFFF;
       color: var(--text-dark);
       outline: none;
@@ -173,116 +262,175 @@
 
     .color-select:focus {
       border-color: var(--verde-claro);
-      box-shadow: 0 0 0 2px rgba(0, 128, 70, 0.2);
+      box-shadow: 0 0 0 3px rgba(0, 128, 70, 0.1);
+    }
+
+    .card-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .price-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
     .price {
-      font-size: 1.35rem;
-      color: var(--verde-claro);
+      font-size: 1.4rem;
+      color: var(--verde-escuro);
       font-weight: 700;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px dashed #E5E7EB;
+    }
+
+    .btn-buy {
+      background-color: var(--verde-escuro);
+      color: var(--white);
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-buy:hover {
+      background-color: var(--verde-claro);
     }
 
     /* ===================================================
-       5. RODAPÉ
+       6. RODAPÉ INSTITUCIONAL
        =================================================== */
     footer {
       background-color: var(--verde-escuro);
       color: var(--white);
       text-align: center;
-      padding: 1.5rem 1rem;
-      margin-top: 4rem;
-      border-top: 3px solid var(--verde-lima);
+      padding: 2rem 1rem;
+      border-top: 4px solid var(--verde-lima);
     }
 
     footer p {
       font-size: 0.85rem;
-      color: #9CA3AF;
+      color: #94A3B8;
     }
   </style>
 </head>
 <body>
 
-  <!-- CABEÇALHO COM LOGO INSTITUCIONAL -->
+  <!-- BARRA SUPERIOR DE SUPORTE -->
+  <div class="top-bar">
+    <div class="top-bar-info">
+      <span>📍 Grupo SR - Soluções Industriais</span>
+      <span>📧 Comercial: vendas@sr.ind.br</span>
+    </div>
+  </div>
+
+  <!-- CABEÇALHO CLEAN COM LOGO DESTACADA -->
   <header>
-    <div class="logo">
+    <div class="logo-container">
       <img src="Logo_Grupo_SR.png" alt="Logo Grupo SR">
     </div>
     <nav>
       <ul>
         <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#equipamentos">SR Equipamentos</a></li>
-        <li><a href="#elevadores">SR Elevadores</a></li>
-        <li><a href="#service">SR Service</a></li>
+        <li><a href="#sobre">Empresa</a></li>
+        <li><a href="#contato">Atendimento</a></li>
       </ul>
     </nav>
+    <a href="#contato" class="btn-contact">Fazer Orçamento</a>
   </header>
 
-  <!-- ÁREA DE CONTEÚDO PRINCIPAL -->
+  <!-- BANNER DE APRESENTAÇÃO -->
+  <section class="hero-banner">
+    <h1 class="brand-font">Catálogo de Peças e Componentes</h1>
+    <p>Peças originais com a garantia de qualidade e alta performance do Grupo SR.</p>
+  </section>
+
+  <!-- CONTEÚDO PRINCIPAL DO CATÁLOGO -->
   <main class="container">
-    <h2 class="page-title" id="catalogo">Catálogo de Produtos</h2>
+    <h2 class="section-title" id="catalogo">Produtos Disponíveis</h2>
 
     <div class="catalog">
 
       <!-- ITEM 1: CÓDIGO PAI 122041 -->
       <div class="product-card" id="product-122041">
         <div>
-          <img id="img-122041" src="122041_Branco.png" alt="CONJUNTO AMORTECEDOR FINAL 45° Ø200 mm">
+          <div class="img-wrapper">
+            <img id="img-122041" src="122041_Branco.png" alt="CONJUNTO AMORTECEDOR FINAL 45° Ø200 mm">
+          </div>
           <div class="product-title">CONJUNTO AMORTECEDOR FINAL 45° Ø200 mm</div>
           <div class="product-code">Cód. Pai: 122041</div>
 
-          <label for="color-122041"><strong>Selecione a Cor:</strong></label>
-          <select id="color-122041" class="color-select" onchange="updateProduct('122041')">
-            <option value="181970" data-img="122041_Branco.png" selected>
-              BRANCO#RAL 9016#PO#1
-            </option>
-            <option value="180920" data-img="122041_Bege.png">
-              BEGE#MUNSELL 7.5Y8/2#PO#1
-            </option>
-          </select>
+          <div class="option-group">
+            <label for="color-122041">Selecione o Acabamento / Cor:</label>
+            <select id="color-122041" class="color-select" onchange="updateProduct('122041')">
+              <option value="181970" data-img="122041_Branco.png" selected>
+                BRANCO#RAL 9016#PO#1
+              </option>
+              <option value="180920" data-img="122041_Bege.png">
+                BEGE#MUNSELL 7.5Y8/2#PO#1
+              </option>
+            </select>
+          </div>
         </div>
 
-        <div class="price" id="price-122041">
-          R$ --,--
+        <div class="card-footer">
+          <div>
+            <span class="price-label">Preço de Venda Unitário</span>
+            <div class="price" id="price-122041">R$ --,--</div>
+          </div>
+          <button class="btn-buy">Solicitar Item</button>
         </div>
       </div>
 
       <!-- ITEM 2: CÓDIGO PAI 26739 -->
       <div class="product-card" id="product-26739">
         <div>
-          <img id="img-26739" src="26739_Branca.png" alt="CURVA FUNDIDA 30° Ø200mm">
+          <div class="img-wrapper">
+            <img id="img-26739" src="26739_Branca.png" alt="CURVA FUNDIDA 30° Ø200mm">
+          </div>
           <div class="product-title">CURVA FUNDIDA 30° Ø200mm</div>
           <div class="product-code">Cód. Pai: 26739</div>
 
-          <label for="color-26739"><strong>Selecione a Cor:</strong></label>
-          <select id="color-26739" class="color-select" onchange="updateProduct('26739')">
-            <option value="132583" data-img="26739_Branca.png" selected>
-              BRANCO#RAL 9016#PO#1
-            </option>
-            <option value="61170" data-img="26739_Bege.png">
-              BEGE#MUNSELL 7.5Y8/2#PO#1
-            </option>
-          </select>
+          <div class="option-group">
+            <label for="color-26739">Selecione o Acabamento / Cor:</label>
+            <select id="color-26739" class="color-select" onchange="updateProduct('26739')">
+              <option value="132583" data-img="26739_Branca.png" selected>
+                BRANCO#RAL 9016#PO#1
+              </option>
+              <option value="61170" data-img="26739_Bege.png">
+                BEGE#MUNSELL 7.5Y8/2#PO#1
+              </option>
+            </select>
+          </div>
         </div>
 
-        <div class="price" id="price-26739">
-          R$ --,--
+        <div class="card-footer">
+          <div>
+            <span class="price-label">Preço de Venda Unitário</span>
+            <div class="price" id="price-26739">R$ --,--</div>
+          </div>
+          <button class="btn-buy">Solicitar Item</button>
         </div>
       </div>
 
     </div>
   </main>
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ INSTITUCIONAL -->
   <footer>
     <p>&copy; 2026 Grupo SR. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- SCRIPT DE LÓGICA DE PREÇOS E IMAGENS -->
+  <!-- SCRIPT DE PREÇOS VINDOS DA PLANILHA -->
   <script>
-    // Mapeamento exato de Código Item (Coluna B) -> Valor de Venda (Coluna G)
+    // Mapeamento de Código do Item (Coluna B) -> Valor de Venda (Coluna G da planilha)
     const tabelaPrecosPlanilha = {
       // Item 26739
       "61170": 262.04,   // BEGE
@@ -297,13 +445,13 @@
       const selectElement = document.getElementById(`color-${productId}`);
       const selectedOption = selectElement.options[selectElement.selectedIndex];
       
-      const codigoItem = selectedOption.value; // Código do Item (Coluna B)
+      const codigoItem = selectedOption.value;
       const newImg = selectedOption.getAttribute('data-img');
       
-      // 1. Atualiza a imagem do produto
+      // 1. Atualiza a foto do produto
       document.getElementById(`img-${productId}`).src = newImg;
 
-      // 2. Busca o Valor de Venda direto da tabela
+      // 2. Atualiza o Preço de Venda
       if (tabelaPrecosPlanilha[codigoItem] !== undefined) {
         const precoVenda = tabelaPrecosPlanilha[codigoItem];
         document.getElementById(`price-${productId}`).innerText = 
@@ -313,7 +461,7 @@
       }
     }
 
-    // Inicializa os preços ao carregar a página
+    // Inicializa preços ao carregar
     window.onload = function() {
       updateProduct('122041');
       updateProduct('26739');
