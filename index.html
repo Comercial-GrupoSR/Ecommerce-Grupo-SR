@@ -15,10 +15,10 @@
        1. VARIÁVEIS DE CORES INSTITUCIONAIS (GRUPO SR)
        =================================================== */
     :root {
-      --verde-escuro: #10543A; /* Cor Principal */
-      --verde-claro:  #008046; /* Apoio */
-      --verde-lima:   #7DC817; /* Apoio / Destaques */
-      --verde-suave:  #5BBA6F; /* Apoio */
+      --verde-escuro: #10543A;
+      --verde-claro:  #008046;
+      --verde-lima:   #7DC817;
+      --verde-suave:  #5BBA6F;
       
       --bg-light:      #F4F6F8;
       --text-dark:     #1F2937;
@@ -226,19 +226,19 @@
 
     <div class="catalog">
 
-      <!-- ITEM 1: CÓDIGO 122041 -->
+      <!-- ITEM 1: CÓDIGO PAI 122041 -->
       <div class="product-card" id="product-122041">
         <div>
           <img id="img-122041" src="122041_Branco.png" alt="CONJUNTO AMORTECEDOR FINAL 45° Ø200 mm">
           <div class="product-title">CONJUNTO AMORTECEDOR FINAL 45° Ø200 mm</div>
-          <div class="product-code">Cód. Item: 122041</div>
+          <div class="product-code">Cód. Pai: 122041</div>
 
           <label for="color-122041"><strong>Selecione a Cor:</strong></label>
           <select id="color-122041" class="color-select" onchange="updateProduct('122041')">
-            <option value="122041_BRANCO" data-img="122041_Branco.png" selected>
+            <option value="181970" data-img="122041_Branco.png" selected>
               BRANCO#RAL 9016#PO#1
             </option>
-            <option value="122041_BEGE" data-img="122041_Bege.png">
+            <option value="180920" data-img="122041_Bege.png">
               BEGE#MUNSELL 7.5Y8/2#PO#1
             </option>
           </select>
@@ -249,12 +249,12 @@
         </div>
       </div>
 
-      <!-- ITEM 2: CURVA FUNDIDA 30° Ø200mm (CÓDIGO 26739) -->
+      <!-- ITEM 2: CÓDIGO PAI 26739 -->
       <div class="product-card" id="product-26739">
         <div>
           <img id="img-26739" src="26739_Branca.png" alt="CURVA FUNDIDA 30° Ø200mm">
           <div class="product-title">CURVA FUNDIDA 30° Ø200mm</div>
-          <div class="product-code">Cód. Item: 26739</div>
+          <div class="product-code">Cód. Pai: 26739</div>
 
           <label for="color-26739"><strong>Selecione a Cor:</strong></label>
           <select id="color-26739" class="color-select" onchange="updateProduct('26739')">
@@ -282,38 +282,38 @@
 
   <!-- SCRIPT DE LÓGICA DE PREÇOS E IMAGENS -->
   <script>
-    // Mapeamento de Custo Médio por Máscara/Código
-    const mascaraCustos = {
-      // Item 122041
-      "122041_BRANCO": 105.00,
-      "122041_BEGE": 105.00,
+    // Mapeamento exato de Código Item (Coluna B) -> Valor de Venda (Coluna G)
+    const tabelaPrecosPlanilha = {
+      // Item 26739
+      "61170": 262.04,   // BEGE
+      "132583": 260.50,  // BRANCO
 
-      // Item 26739 (Máscaras específicas)
-      "132583": 105.00,
-      "61170": 105.00
+      // Item 122041
+      "181970": 739.92,  // BRANCO
+      "180920": 614.58   // BEGE
     };
 
     function updateProduct(productId) {
       const selectElement = document.getElementById(`color-${productId}`);
       const selectedOption = selectElement.options[selectElement.selectedIndex];
       
-      const mascara = selectedOption.value;
+      const codigoItem = selectedOption.value; // Código do Item (Coluna B)
       const newImg = selectedOption.getAttribute('data-img');
       
-      // 1. Atualiza a imagem do produto específico
+      // 1. Atualiza a imagem do produto
       document.getElementById(`img-${productId}`).src = newImg;
 
-      // 2. Recalcula o Preço de Venda (Custo Médio * 3.5)
-      if (mascaraCustos[mascara]) {
-        const custoMedio = mascaraCustos[mascara];
-        const precoVenda = custoMedio * 3.5;
-        document.getElementById(`price-${productId}`).innerText = `R$ ${precoVenda.toFixed(2).replace('.', ',')}`;
+      // 2. Busca o Valor de Venda direto da tabela
+      if (tabelaPrecosPlanilha[codigoItem] !== undefined) {
+        const precoVenda = tabelaPrecosPlanilha[codigoItem];
+        document.getElementById(`price-${productId}`).innerText = 
+          `R$ ${precoVenda.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
       } else {
         document.getElementById(`price-${productId}`).innerText = 'Preço sob consulta';
       }
     }
 
-    // Inicializa os preços de todos os produtos ao carregar a página
+    // Inicializa os preços ao carregar a página
     window.onload = function() {
       updateProduct('122041');
       updateProduct('26739');
