@@ -45,47 +45,35 @@
     }
 
     /* ===================================================
-       2. BARRA SUPERIOR (TOP BAR CORPORATIVA)
-       =================================================== */
-    .top-bar {
-      background-color: var(--verde-escuro);
-      color: var(--white);
-      padding: 6px 2rem;
-      font-size: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 500;
-    }
-
-    .top-bar-info span {
-      margin-right: 20px;
-    }
-
-    /* ===================================================
-       3. CABEÇALHO CLEAN (ESTILO SR.IND.BR)
+       2. CABEÇALHO VERDE E TRANSPARENTE
        =================================================== */
     header {
-      background-color: var(--white);
-      padding: 1rem 2rem;
+      /* Fundo verde transparente com desfoque estilo glassmorphism */
+      background: rgba(16, 84, 58, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 1rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 3px solid var(--verde-claro);
+      border-bottom: 3px solid var(--verde-lima);
     }
 
-    /* LOGO DESTACADA EM FUNDO CLARO */
+    /* LOGO DESTACADA */
     .logo-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px 16px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
     }
 
     .logo-container img {
-      height: 60px; /* Logo grande e bem nítida */
+      height: 50px;
       width: auto;
       display: block;
     }
@@ -97,7 +85,7 @@
     }
 
     nav a {
-      color: var(--text-dark);
+      color: var(--white);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
@@ -106,33 +94,36 @@
     }
 
     nav a:hover {
-      color: var(--verde-claro);
+      color: var(--verde-lima);
     }
 
-    .btn-contact {
+    .btn-cart-header {
       background-color: var(--verde-lima);
       color: var(--verde-escuro);
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 700;
       font-size: 0.85rem;
       text-transform: uppercase;
       transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .btn-contact:hover {
+    .btn-cart-header:hover {
       background-color: #6eb314;
       transform: translateY(-1px);
     }
 
     /* ===================================================
-       4. HERO BANNER DE APRESENTAÇÃO
+       3. HERO BANNER DE APRESENTAÇÃO
        =================================================== */
     .hero-banner {
       background: linear-gradient(135deg, var(--verde-escuro) 0%, #0a3826 100%);
       color: var(--white);
-      padding: 3rem 2rem;
+      padding: 3.5rem 2rem;
       text-align: center;
       margin-bottom: 3rem;
     }
@@ -150,7 +141,7 @@
     }
 
     /* ===================================================
-       5. CATÁLOGO DE PRODUTOS
+       4. CATÁLOGO DE PRODUTOS
        =================================================== */
     .container {
       max-width: 1280px;
@@ -305,7 +296,7 @@
     }
 
     /* ===================================================
-       6. RODAPÉ INSTITUCIONAL
+       5. RODAPÉ INSTITUCIONAL
        =================================================== */
     footer {
       background-color: var(--verde-escuro);
@@ -323,15 +314,7 @@
 </head>
 <body>
 
-  <!-- BARRA SUPERIOR DE SUPORTE -->
-  <div class="top-bar">
-    <div class="top-bar-info">
-      <span>📍 Grupo SR - Soluções Industriais</span>
-      <span>📧 Comercial: vendas@sr.ind.br</span>
-    </div>
-  </div>
-
-  <!-- CABEÇALHO CLEAN COM LOGO DESTACADA -->
+  <!-- CABEÇALHO EM TOM DE VERDE E TRANSPARENTE -->
   <header>
     <div class="logo-container">
       <img src="Logo_Grupo_SR.png" alt="Logo Grupo SR">
@@ -339,16 +322,17 @@
     <nav>
       <ul>
         <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#sobre">Empresa</a></li>
+        <!-- LINK QUE ABRE EM NOVA ABA PARA O SITE OFICIAL -->
+        <li><a href="https://sr.ind.br/" target="_blank" rel="noopener noreferrer">Empresa</a></li>
         <li><a href="#contato">Atendimento</a></li>
       </ul>
     </nav>
-    <a href="#contato" class="btn-contact">Fazer Orçamento</a>
+    <a href="#carrinho" class="btn-cart-header">🛒 Ver Carrinho</a>
   </header>
 
-  <!-- BANNER DE APRESENTAÇÃO -->
+  <!-- BANNER PRINCIPAL COM TÍTULO ATUALIZADO -->
   <section class="hero-banner">
-    <h1 class="brand-font">Catálogo de Peças e Componentes</h1>
+    <h1 class="brand-font">Catálogo De Peças de Reposição e Acessórios</h1>
     <p>Peças originais com a garantia de qualidade e alta performance do Grupo SR.</p>
   </section>
 
@@ -385,7 +369,7 @@
             <span class="price-label">Preço de Venda Unitário</span>
             <div class="price" id="price-122041">R$ --,--</div>
           </div>
-          <button class="btn-buy">Solicitar Item</button>
+          <button class="btn-buy">Adicionar ao Carrinho</button>
         </div>
       </div>
 
@@ -416,7 +400,7 @@
             <span class="price-label">Preço de Venda Unitário</span>
             <div class="price" id="price-26739">R$ --,--</div>
           </div>
-          <button class="btn-buy">Solicitar Item</button>
+          <button class="btn-buy">Adicionar ao Carrinho</button>
         </div>
       </div>
 
@@ -430,13 +414,9 @@
 
   <!-- SCRIPT DE PREÇOS VINDOS DA PLANILHA -->
   <script>
-    // Mapeamento de Código do Item (Coluna B) -> Valor de Venda (Coluna G da planilha)
     const tabelaPrecosPlanilha = {
-      // Item 26739
       "61170": 262.04,   // BEGE
       "132583": 260.50,  // BRANCO
-
-      // Item 122041
       "181970": 739.92,  // BRANCO
       "180920": 614.58   // BEGE
     };
@@ -448,10 +428,8 @@
       const codigoItem = selectedOption.value;
       const newImg = selectedOption.getAttribute('data-img');
       
-      // 1. Atualiza a foto do produto
       document.getElementById(`img-${productId}`).src = newImg;
 
-      // 2. Atualiza o Preço de Venda
       if (tabelaPrecosPlanilha[codigoItem] !== undefined) {
         const precoVenda = tabelaPrecosPlanilha[codigoItem];
         document.getElementById(`price-${productId}`).innerText = 
@@ -461,7 +439,6 @@
       }
     }
 
-    // Inicializa preços ao carregar
     window.onload = function() {
       updateProduct('122041');
       updateProduct('26739');
