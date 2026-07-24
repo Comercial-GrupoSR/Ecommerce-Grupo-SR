@@ -1,305 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Teste</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
-            --border-color: #e2e8f0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 2rem 1rem;
-        }
-
-        header {
-            max-width: 1200px;
-            margin: 0 auto 2rem auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            color: #0f172a;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .product-image-container {
-            width: 100%;
-            height: 280px;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .product-image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: opacity 0.3s ease;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-code {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            min-height: 2.8em;
-        }
-
-        .option-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .option-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-            color: #475569;
-        }
-
-        .option-select {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border-radius: 6px;
-            border: 1px solid #cbd5e1;
-            background-color: #fff;
-            font-size: 0.9rem;
-            color: #1e293b;
-            outline: none;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-
-        .option-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .product-price-box {
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-        }
-
-        .price-label {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        .price-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #059669;
-        }
-
-        .btn-buy {
-            margin-top: 1rem;
-            width: 100%;
-            padding: 0.75rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-buy:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .loading-badge {
-            font-size: 0.75rem;
-            color: #64748b;
-            font-style: italic;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Grupo SR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 20px;
+    }
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      max-width: 350px;
+      padding: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 12px 0 6px 0;
+    }
+    .product-code {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    .color-select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .price {
+      font-size: 1.25rem;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Catálogo de Produtos</h1>
-        <span class="loading-badge" id="status-badge">Conectando ao Google Sheets...</span>
-    </header>
+  <!-- CARD DO PRODUTO: CURVA FUNDIDA 30° Ø200mm -->
+  <div class="product-card" id="product-26739">
+    <!-- Imagem Padrão (Branco) -->
+    <img id="img-26739" src="26739_Branca.png" alt="CURVA FUNDIDA 30° Ø200mm">
+    
+    <div class="product-title">CURVA FUNDIDA 30° Ø200mm</div>
+    <div class="product-code">Cód. Item: 26739</div>
 
-    <main class="container" id="products-container">
-        <!-- Os produtos serão renderizados dinamicamente aqui -->
-    </main>
+    <label for="color-26739"><strong>Selecione a Cor:</strong></label>
+    <select id="color-26739" class="color-select" onchange="updateProduct('26739')">
+      <option value="132583" data-img="26739_Branca.png" selected>
+        BRANCO#RAL 9016#PO#1
+      </option>
+      <option value="61170" data-img="26739_Bege.png">
+        BEGE#MUNSELL 7.5Y8/2#PO#1
+      </option>
+    </select>
 
-    <script>
-        // Substitua esta URL pela URL de publicação Web/API do seu Apps Script se quiser dados 100% em tempo real
-        // Por padrão, mantemos a estrutura dinâmica baseada no modelo fornecido
-        
-        // Fator de multiplicação de venda sobre o custo médio
-        const MULTIPLICADOR = 3.5;
+    <div class="price" id="price-26739">
+      R$ --,--
+    </div>
+  </div>
 
-        // Base de dados inicial dos produtos (A máscara relaciona com a variação)
-        const produtosData = [
-            {
-                codigoPai: "122041",
-                descricao: "CONJUNTO AMORTECEDOR FINAL 45° Ø200 mm",
-                variacoes: [
-                    {
-                        mascara: "181970",
-                        corDescricao: "BRANCO#RAL 9016#PO#1",
-                        custoMedio: 20.8855, // Será atualizado dinamicamente via planilha
-                        imagem: "122041_Branco.png"
-                    },
-                    {
-                        mascara: "180920",
-                        corDescricao: "BEGE#MUNSELL 7.5Y8/2#PO#1",
-                        custoMedio: 22.5000, // Será atualizado dinamicamente via planilha
-                        imagem: "122041_Bege.png"
-                    }
-                ]
-            }
-        ];
+  <script>
+    // Tabela/Mapeamento de Custo Médio por Máscara (Substitua ou integre com sua API)
+    const mascaraCustos = {
+      "132583": 100.00, // Exemplo de custo médio para o Branco
+      "61170": 105.00   // Exemplo de custo médio para o Bege
+    };
 
-        // Função para formatar em moeda BRL (R$)
-        function formatarMoeda(valor) {
-            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
+    function updateProduct(productId) {
+      const selectElement = document.getElementById(`color-${productId}`);
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      
+      const mascara = selectedOption.value;
+      const newImg = selectedOption.getAttribute('data-img');
+      
+      // 1. Atualiza a imagem do produto
+      document.getElementById(`img-${productId}`).src = newImg;
 
-        // Renderiza os cards de produtos no HTML
-        function renderizarProdutos() {
-            const container = document.getElementById('products-container');
-            container.innerHTML = '';
+      // 2. Recalcula o Preço de Venda (Custo Médio * 3.5)
+      if (mascaraCustos[mascara]) {
+        const custoMedio = mascaraCustos[mascara];
+        const precoVenda = custoMedio * 3.5;
+        document.getElementById(`price-${productId}`).innerText = `R$ ${precoVenda.toFixed(2).replace('.', ',')}`;
+      } else {
+        document.getElementById(`price-${productId}`).innerText = 'Preço sob consulta';
+      }
+    }
 
-            produtosData.forEach((produto, index) => {
-                const variacaoInicial = produto.variacoes[0];
-                const precoVendaInicial = variacaoInicial.custoMedio * MULTIPLICADOR;
+    // Inicializa a exibição de preço ao carregar a página
+    window.onload = function() {
+      updateProduct('26739');
+    };
+  </script>
 
-                const cardHtml = `
-                    <div class="product-card" id="product-card-${index}">
-                        <div class="product-image-container">
-                            <img id="img-${index}" src="${variacaoInicial.imagem}" alt="${produto.descricao}">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-code">Cód: ${produto.codigoPai}</div>
-                            <h2 class="product-title">${produto.descricao}</h2>
-                            
-                            <div class="option-group">
-                                <label for="select-cor-${index}">Selecione a Cor / Acabamento:</label>
-                                <select id="select-cor-${index}" class="option-select" onchange="alterarVariacao(${index})">
-                                    ${produto.variacoes.map((v, i) => `
-                                        <option value="${i}">${v.corDescricao}</option>
-                                    `).join('')}
-                                </select>
-                            </div>
-
-                            <div class="product-price-box">
-                                <span class="price-label">Preço:</span>
-                                <span class="price-value" id="price-${index}">${formatarMoeda(precoVendaInicial)}</span>
-                            </div>
-
-                            <button class="btn-buy" onclick="adicionarAoCarrinho(${index})">Comprar</button>
-                        </div>
-                    </div>
-                `;
-
-                container.insertAdjacentHTML('beforeend', cardHtml);
-            });
-
-            document.getElementById('status-badge').innerText = 'Dados carregados com sucesso';
-        }
-
-        // Função acionada ao alterar a cor no menu suspenso (Select)
-        function alterarVariacao(productIndex) {
-            const produto = produtosData[productIndex];
-            const selectElement = document.getElementById(`select-cor-${productIndex}`);
-            const selectedIndex = selectElement.value;
-            const variacaoSelecionada = produto.variacoes[selectedIndex];
-
-            // 1. Atualiza a Imagem
-            const imgElement = document.getElementById(`img-${productIndex}`);
-            imgElement.src = variacaoSelecionada.imagem;
-
-            // 2. Calcula e Atualiza o Preço (Custo da Máscara * 3.5)
-            const novoPreco = variacaoSelecionada.custoMedio * MULTIPLICADOR;
-            const priceElement = document.getElementById(`price-${productIndex}`);
-            priceElement.innerText = formatarMoeda(novoPreco);
-        }
-
-        function adicionarAoCarrinho(productIndex) {
-            const produto = produtosData[productIndex];
-            const selectElement = document.getElementById(`select-cor-${productIndex}`);
-            const variacao = produto.variacoes[selectElement.value];
-            const preco = variacao.custoMedio * MULTIPLICADOR;
-
-            alert(`Produto adicionado ao carrinho!\n\nItem: ${produto.descricao}\nCódigo: ${produto.codigoPai}\nMáscara: ${variacao.mascara}\nCor: ${variacao.corDescricao}\nValor: ${formatarMoeda(preco)}`);
-        }
-
-        // Inicializa a página
-        document.addEventListener('DOMContentLoaded', renderizarProdutos);
-    </script>
 </body>
 </html>
