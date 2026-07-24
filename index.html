@@ -10,23 +10,33 @@
       background-color: #f4f4f9;
       margin: 20px;
     }
+    .catalog {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
     .product-card {
       background: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
-      max-width: 350px;
+      width: 320px;
       padding: 16px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .product-card img {
       width: 100%;
-      height: auto;
+      height: 220px;
+      object-fit: contain;
       border-radius: 4px;
+      background-color: #fafafa;
     }
     .product-title {
       font-size: 1.1rem;
       font-weight: bold;
-      margin: 12px 0 6px 0;
+      margin: 12px 0 4px 0;
     }
     .product-code {
       font-size: 0.85rem;
@@ -36,7 +46,7 @@
     .color-select {
       width: 100%;
       padding: 8px;
-      margin-top: 8px;
+      margin-top: 6px;
       margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -50,34 +60,68 @@
 </head>
 <body>
 
-  <!-- CARD DO PRODUTO: CURVA FUNDIDA 30° Ø200mm -->
-  <div class="product-card" id="product-26739">
-    <!-- Imagem Padrão (Branco) -->
-    <img id="img-26739" src="26739_Branca.png" alt="CURVA FUNDIDA 30° Ø200mm">
-    
-    <div class="product-title">CURVA FUNDIDA 30° Ø200mm</div>
-    <div class="product-code">Cód. Item: 26739</div>
+  <h2>Catálogo de Produtos</h2>
 
-    <label for="color-26739"><strong>Selecione a Cor:</strong></label>
-    <select id="color-26739" class="color-select" onchange="updateProduct('26739')">
-      <option value="132583" data-img="26739_Branca.png" selected>
-        BRANCO#RAL 9016#PO#1
-      </option>
-      <option value="61170" data-img="26739_Bege.png">
-        BEGE#MUNSELL 7.5Y8/2#PO#1
-      </option>
-    </select>
+  <div class="catalog">
 
-    <div class="price" id="price-26739">
-      R$ --,--
+    <!-- ITEM 1: CÓDIGO 122041 -->
+    <div class="product-card" id="product-122041">
+      <div>
+        <img id="img-122041" src="122041_Branco.png" alt="ITEM 122041">
+        <div class="product-title">ITEM 122041</div>
+        <div class="product-code">Cód. Item: 122041</div>
+
+        <label for="color-122041"><strong>Selecione a Cor:</strong></label>
+        <select id="color-122041" class="color-select" onchange="updateProduct('122041')">
+          <option value="122041_BRANCO" data-img="122041_Branco.png" selected>
+            BRANCO#RAL 9016#PO#1
+          </option>
+          <option value="122041_BEGE" data-img="122041_Bege.png">
+            BEGE#MUNSELL 7.5Y8/2#PO#1
+          </option>
+        </select>
+      </div>
+
+      <div class="price" id="price-122041">
+        R$ --,--
+      </div>
     </div>
+
+    <!-- ITEM 2: CURVA FUNDIDA 30° Ø200mm (CÓDIGO 26739) -->
+    <div class="product-card" id="product-26739">
+      <div>
+        <img id="img-26739" src="26739_Branca.png" alt="CURVA FUNDIDA 30° Ø200mm">
+        <div class="product-title">CURVA FUNDIDA 30° Ø200mm</div>
+        <div class="product-code">Cód. Item: 26739</div>
+
+        <label for="color-26739"><strong>Selecione a Cor:</strong></label>
+        <select id="color-26739" class="color-select" onchange="updateProduct('26739')">
+          <option value="132583" data-img="26739_Branca.png" selected>
+            BRANCO#RAL 9016#PO#1
+          </option>
+          <option value="61170" data-img="26739_Bege.png">
+            BEGE#MUNSELL 7.5Y8/2#PO#1
+          </option>
+        </select>
+      </div>
+
+      <div class="price" id="price-26739">
+        R$ --,--
+      </div>
+    </div>
+
   </div>
 
   <script>
-    // Tabela/Mapeamento de Custo Médio por Máscara (Substitua ou integre com sua API)
+    // Mapeamento de Custo Médio por Máscara/Código (Ajuste os valores conforme seu sistema)
     const mascaraCustos = {
-      "132583": 100.00, // Exemplo de custo médio para o Branco
-      "61170": 105.00   // Exemplo de custo médio para o Bege
+      // Item 122041
+      "122041_BRANCO": 100.00,
+      "122041_BEGE": 105.00,
+
+      // Item 26739 (Máscaras específicas)
+      "132583": 100.00,
+      "61170": 105.00
     };
 
     function updateProduct(productId) {
@@ -87,7 +131,7 @@
       const mascara = selectedOption.value;
       const newImg = selectedOption.getAttribute('data-img');
       
-      // 1. Atualiza a imagem do produto
+      // 1. Atualiza a imagem do produto específico
       document.getElementById(`img-${productId}`).src = newImg;
 
       // 2. Recalcula o Preço de Venda (Custo Médio * 3.5)
@@ -100,8 +144,9 @@
       }
     }
 
-    // Inicializa a exibição de preço ao carregar a página
+    // Inicializa os preços de todos os produtos ao carregar a página
     window.onload = function() {
+      updateProduct('122041');
       updateProduct('26739');
     };
   </script>
